@@ -1,46 +1,81 @@
 package TtdProjects;
 
+import NewbankPackage.Buyer;
+
 import java.util.ArrayList;
 
-public class HumanList {
+public class HumanList implements Actions{
+
+
     private ArrayList<String> names = new ArrayList<>();
     private int age;
-    private String address;
     private double amount;
+    private String id;
 
-    public void setNames(String newNames) {
-        names.add(newNames);
+
+
+    @Override
+    public void add(String name) {
+        names.add(name);
     }
 
-    public ArrayList<String> getNames() {
-        return names;
+    @Override
+    public void delete(String name) {
+        names.remove(name);
     }
 
-    public void removeNames(int position) {
-        names.remove(position);
+    @Override
+    public void modify(String name) {
+        names.get(3);
+        names.set(3,"Fola");
+
     }
 
-    public void modifyNames(int position,String newName) {
-        names.set(position,newName);
+    @Override
+    public void search(String name) {
+
+    }
+
+    @Override
+    public void insert(String name, int position) {
+
+    }
+
+//    @Override
+//    public void insert(String name, int position) {
+//        int newPosition = position -1;
+//        ArrayList<String> newArray = new ArrayList<>();
+//        for (int i = 0; i < position; i++) {
+//            newArray.add = names.ge
+//        }
+//        for (int i = 0; i < names.size(); i++) {
+//            if (){
+//
+//            }
+//        }
+//    }
+
+    @Override
+    public void printList() {
         for(int i = 0; i < names.size(); i++){
-            System.out.println(names);
         }
-        System.out.println("The name at position "+(position + 1)+" has been changed to "+newName);
+        System.out.println(names);
 
     }
 
-    public void deleteNames(int position) {
-        names.get(position);
-        names.remove(position);
-        System.out.println("The name at postion "+ position+" has been removed");
-    }
-
-    public String findItem(String searchItem) {
-        int position = names.indexOf(searchItem);
-        if(position >=0){
-            return names.get(position);
+    @Override
+    public String getName(int position) {
+        int newPosition = position -1;
+        for (int i = 0; i < names.size(); i++) {
+            if(i == newPosition){
+                return names.get(i);
+            }
         }
         return null;
+    }
+
+    public ArrayList<String> getAll(){
+        return names;
     }
 }
 
